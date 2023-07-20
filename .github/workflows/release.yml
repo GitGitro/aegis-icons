@@ -38,18 +38,6 @@ jobs:
         run:  |
           python make-pack.py gen-def 
           python make-pack.py gen --output ${{ env.zipname }} --version ${{ env.CURRENT_DATE }}
-          
-      - name: Update pack.json
-        uses: jossef/action-set-json-field@v2.1
-        with:
-          file: pack.json
-          field: name
-          value: delta-aegis-icons
-          
-      - name: Commit update pack.json
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Update pack.json
 
       - name: Create a GitHub release
         uses: softprops/action-gh-release@v0.1.15
